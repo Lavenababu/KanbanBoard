@@ -3,6 +3,11 @@ import './App.css';
 import Board from './Components/Board/Board';
 
 function App() {
+  // fetch("https://apimocha.com/quicksell/data").then((result)=>{
+  //   XPathResult.json().then((resp)=>{
+  //     console.warn("expecto patronum",resp)
+  //   })
+  // })
   return (
     <div className="App">
       <div className='app_navbar'>

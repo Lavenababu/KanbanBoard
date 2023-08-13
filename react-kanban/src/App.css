@@ -15,10 +15,13 @@
   flex:1;
   width: 100%;
   overflow-x: auto;
-  padding: 20px;
+
 }
 
 .app_boards{
+  padding: 20px;
+  padding-bottom: 5px;
+  height: 100% ;
   min-width: fit-content;
   display: flex;
   gap: 30px;

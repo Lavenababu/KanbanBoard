@@ -56,8 +56,6 @@ function App() {
       <div className='app_outer'>
         <div className='app_boards'>
 
-        {/* <Dropdown selectedOption2={selectedOption2} /> */}
-
           {/* {tickets.map((tickets)=>( */}
             <Board 
             tickets={tickets}

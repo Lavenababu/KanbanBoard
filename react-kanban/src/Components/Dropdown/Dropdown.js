@@ -14,7 +14,6 @@ const DisplayBtn = () => {
   
     const handleOptionChange2 = (event) => {
       setSelectedOption2(event.target.value);
-      // console.log(selectedOption2);
     };
 
   return (

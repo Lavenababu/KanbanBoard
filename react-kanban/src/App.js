@@ -7,6 +7,7 @@ function App() {
 
   const [tickets,setTickets]=useState([]); 
   // const [users,setUsers]=useState([]);
+  const [selectedOption2, setSelectedOption2] = useState('');
 
   useEffect(()=>{
     fetch("https://apimocha.com/quicksell/data")
@@ -26,13 +27,24 @@ function App() {
   // console.warn(tickets)
   // console.warn(users)
 
-const [target,setTarget]=useState({
-  cid: "",
-  bid:"",
-});
+// const [target,setTarget]=useState({
+//   cid: "",
+//   bid:"",
+// });
 
-// const handleDragEnd=()=>{
+// const handleDragEnd=(cid,bid)=>{
+//   setTarget({
+//     let s_bIndex, s_cIndex, t_bIndex, t_cIndex
 
+//     s_bIndex=tickets
+//   })
+// }
+
+// const handleDragEnter=(cid,bid)=>{
+//   setTarget({
+//     cid,
+//     bid,
+//   })
 // }
 
   return (
@@ -44,9 +56,12 @@ const [target,setTarget]=useState({
       <div className='app_outer'>
         <div className='app_boards'>
 
+        {/* <Dropdown selectedOption2={selectedOption2} /> */}
+
           {/* {tickets.map((tickets)=>( */}
             <Board 
             tickets={tickets}
+            selectedOption2={selectedOption2}
             // handleDragEnd={handleDragEnd}
             // handleDragEnter={handleDragEnter}
               />

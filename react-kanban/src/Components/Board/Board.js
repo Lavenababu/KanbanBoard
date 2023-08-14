@@ -3,13 +3,34 @@ import{Plus, MoreHorizontal} from "react-feather";
 
 import "./Board.css";
 import Card from "../Card/Card";
+import Dropdown from "../Dropdown/Dropdown";
 
 
-const Board = ({ tickets, props }) => {
-    const todoTickets = tickets.filter((ticket) => ticket.status === 'Todo');
-    const inProgressTickets = tickets.filter((ticket) => ticket.status === 'In progress');
-    const backlogTickets = tickets.filter((ticket) => ticket.status === 'Backlog');
-    const completedTickets = tickets.filter((ticket) => ticket.status === 'Completed');
+const Board = ({ tickets, selectedOption2 }) => {
+
+    const sortByPriority = (tickets) => {
+        return tickets.slice().sort((a, b) => a.priority - b.priority);
+      };
+
+      const sortById = (tickets) => {
+        return tickets.slice().sort((a, b) => a.id.localeCompare(b.id));
+      };
+
+    const todoTickets = selectedOption2 === "priority"
+    ? sortByPriority(tickets.filter((ticket) => ticket.status === 'Todo'))
+    : sortById(tickets.filter((ticket) => ticket.status === "Todo"));
+
+    const inProgressTickets = selectedOption2 === "priority"
+    ? sortByPriority(tickets.filter((ticket) => ticket.status === "In progress"))
+    : sortById(tickets.filter((ticket) => ticket.status === "In progress"));
+
+    const backlogTickets =selectedOption2 === "priority"
+    ? sortByPriority(tickets.filter((ticket) => ticket.status === 'Backlog'))
+    : sortById(tickets.filter((ticket) => ticket.status === "Backlog"));
+
+    const completedTickets = selectedOption2 === "priority"
+    ? sortByPriority(tickets.filter((ticket) => ticket.status === 'Completed'))
+    : sortById(tickets.filter((ticket) => ticket.status === "Completed"));
     
     return (
       <div className="board">
@@ -18,7 +39,7 @@ const Board = ({ tickets, props }) => {
         <div className="todo_board">
 
         <div className="board_top">
-            <h3 className="board_top_title">To Do<span>2</span></h3>
+            <h3 className="board_top_title">To Do<span>{todoTickets.length}</span></h3>
             <div className="board_top_title_icon">
                 <Plus />
                 <MoreHorizontal />
@@ -43,7 +64,7 @@ const Board = ({ tickets, props }) => {
         <div className="inprogress_board">
 
         <div className="board_top">
-            <h3 className="board_top_title">In Progress<span>2</span></h3>
+            <h3 className="board_top_title">In Progress<span>{inProgressTickets.length}</span></h3>
             <div className="board_top_title_icon">
                 <Plus />
                 <MoreHorizontal />
@@ -55,7 +76,7 @@ const Board = ({ tickets, props }) => {
         {inProgressTickets.map((ticket) => (
 
           <div key={ticket.id} className="list">
-            <Card card={ticket} /> {/* Pass the entire ticket as a card */}
+            <Card card={ticket} />
           </div>          
         ))}
         
@@ -66,7 +87,7 @@ const Board = ({ tickets, props }) => {
         <div className="completed_board">
 
         <div className="board_top">
-            <h3 className="board_top_title">Completed<span>2</span></h3>
+            <h3 className="board_top_title">Completed<span>{completedTickets.length}</span></h3>
             <div className="board_top_title_icon">
                 <Plus />
                 <MoreHorizontal />
@@ -87,7 +108,7 @@ const Board = ({ tickets, props }) => {
         <div className="backlog_board">
 
         <div className="board_top">
-            <h3 className="board_top_title">Backlog<span>2</span></h3>
+            <h3 className="board_top_title">Backlog<span>{backlogTickets.length}</span></h3>
             <div className="board_top_title_icon">
                 <Plus />
                 <MoreHorizontal />
@@ -99,13 +120,12 @@ const Board = ({ tickets, props }) => {
         {backlogTickets.map((ticket) => (
 
           <div key={ticket.id} className="list">
-            <Card card={ticket} /> {/* Pass the entire ticket as a card */}
+            <Card card={ticket} />
           </div>          
         ))}
         
         </div>
         </div>
-
       </div>
     );
   };

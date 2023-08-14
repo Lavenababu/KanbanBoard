@@ -14,6 +14,7 @@ const DisplayBtn = () => {
   
     const handleOptionChange2 = (event) => {
       setSelectedOption2(event.target.value);
+      // console.log(selectedOption2);
     };
 
   return (
@@ -39,7 +40,7 @@ const DisplayBtn = () => {
   );
 };
 
-const DropDown = () => {
+const DropDown = ({selectedOption2}) => {
   const [isCardVisible, setIsCardVisible] = useState(false);
 
   const toggleCardVisibility = () => {
@@ -52,96 +53,11 @@ const DropDown = () => {
       <Sliders size={16} />
         <b>Display</b>
       <ChevronDown size={16} />
-        {/* {isCardVisible ? 'Display' : 'Display'} */}
       </button>
-      {isCardVisible && <DisplayBtn />}
+      {isCardVisible && <DisplayBtn selectedOption2={selectedOption2} />}
     </div>
   );
 };
 
 export default DropDown;
 
-
-// ---Aashish's Code----
-
-// import React, { useState } from "react";
-
-// function DropDown(){
-//   const [select1, setSelect1] = useState('Display all');
-//   const [select2, setSelect2] = useState('');
-//   const [select3, setSelect3] = useState('');
-
-// //   console.log(select1);
-// //   console.log(select2);
-// //   console.log(select3);
-
-
-
-//   return (
-//     <div className="filter">
-      
-//         <select value={select1} onChange={e => setSelect1(e.target.value)}>
-//           <option>Display all</option>
-//           <option>Display by filter</option>
-//         </select>
-        
-//         <div>
-//         <select value={select2} onChange={e => setSelect2(e.target.value)}>
-//           <option>Status</option>
-//           <option>User</option>
-//           <option>Priority</option>
-//         </select>  
-//         </div>     
-
-//         <select value={select3} onChange={e => setSelect3(e.target.value)}>
-//           <option>Priority</option>
-//           <option>Title</option>
-//         </select>       
-      
-//     </div>
-
-//   );
-// }
-
-// export default DropDown;
-
-
-
-// ---Cascading Dropdown---
-
-// import React, { useState } from 'react';
-
-// function Dropdown() {
-//   const display = ['Grouping', 'Ordering']
-//   const options = {
-//     'Grouping' : ['By Status','By User', 'By Priority'],
-//     'Ordering' : ['Priority','Title'],
-//   }
-
-//   const [selectedState, setSelectedState] = useState('')
-//   console.log(selectedState)
-
-//   return (
-//     <div>
-//       <select onChange={(e)=>{setSelectedState(e.target.value)}}>
-//         {
-//           display.map(state => {
-//             return (<option>{state}</option>)
-//           })
-//         }
-//       </select>
-
-      
-//         {selectedState && <select>
-//           {
-//             options[selectedState].map(options=>{
-//               return <option>{options}</option>
-//             })
-//           }
-//         </select>}
-      
-//     </div>
-//   );
-// }
-
-// export default Dropdown;

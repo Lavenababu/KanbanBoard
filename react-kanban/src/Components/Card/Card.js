@@ -4,7 +4,7 @@ import "./Card.css";
 
 function Card({card,props}){
     return(
-        <div className="card" >
+        <div className="card">
         {/* draggable
         onDragEnd={()=>props.handleDragEnd(card.id)}
         onDragEnter={()=>props.handleDragEnter(card.id)}> */}
